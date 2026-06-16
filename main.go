@@ -8,7 +8,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	mux.Handle("/.well-known/acme-challenge/", http.StripPrefix("/.well-known/acme-challenge/", http.FileServer(http.Dir("/var/www/acme-challenge"))))
+	mux.Handle("/.well-known/", http.FileServer(http.Dir("/var/www")))
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
